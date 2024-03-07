@@ -81,11 +81,10 @@ func main() {
 		go func(in <-chan int64, i int64) {
 			defer wg.Done()
 			for o := range out {
-				amounts[i] = o
+				amounts[i]++
 				chOut <- o
 			}
 		}(out, int64(i))
-		amounts[i]++
 	}
 	go func() {
 		// ждём завершения работы всех горутин для outs
