@@ -80,7 +80,7 @@ func main() {
 		wg.Add(1)
 		go func(in <-chan int64, i int64) {
 			defer wg.Done()
-			for o := range out {
+			for o := range in {
 				amounts[i]++
 				chOut <- o
 			}
